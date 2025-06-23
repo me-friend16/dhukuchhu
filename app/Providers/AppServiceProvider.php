@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Share logo with all views
         View::composer('*', function ($view) {
-            $view->with('logo', Logo::first());
+            $view->with('logo', Logo::first() ?? (object) []);
 
             $routeName = Route::currentRouteName();
 
