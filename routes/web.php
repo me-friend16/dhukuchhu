@@ -14,6 +14,10 @@ use App\Http\Controllers\LogoController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\EquipmentCategoryController;
+use App\Http\Controllers\EquipmentController;
+use App\Http\Controllers\ClientController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('products', [HomeController::class, 'product'])->name('products');
@@ -39,7 +43,19 @@ Route::middleware(['role:user'])->group(function () {
     Route::resource('event', EventController::class);
     Route::resource('heroimage', HeroImageController::class);
     Route::resource('team', TeamController::class);
-    Route::resource('logo', LogoController::class);
+    Route::get('logo', [LogoController::class, 'index'])->name('logo.index');
+    Route::post('logo', [LogoController::class, 'update'])->name('logo.update');
+    Route::resource('services', ServiceController::class);
+
+    Route::resource('equipment-categories', EquipmentCategoryController::class);
+    
+    Route::resource('equipment', EquipmentController::class)->except(['create', 'store']);
+    // Show the form to create a product under a specific category
+    Route::get('/equipment-categories/{category}/equipment/create', [EquipmentController::class, 'create'])->name('equipment.create');
+    // Handle the POST request to store a product under a category
+    Route::post('/equipment-categories/{category}/equipment', [EquipmentController::class, 'store'])->name('equipment.store');
+    
+    Route::resource('clients', ClientController::class);
 
     Route::get('admin-contact',[ContactController::class, 'index'])->name('admin.contact');
     Route::put('/admin-contact/{contact}', [ContactController::class, 'update'])->name('contact.changestatus');
