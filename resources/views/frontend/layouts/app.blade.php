@@ -13,7 +13,7 @@
           <div class="natex-line-mask">
             <div class="loader-line"></div>
           </div>
-          <img src="assets/img/natex-preloader.png" alt="">
+          <img src="{{ asset('storage/' . $logo->favicon) }}" alt="">
         </div>
       </div>
     </div>

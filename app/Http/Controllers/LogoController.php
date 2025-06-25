@@ -20,7 +20,7 @@ class LogoController extends Controller
         // This prevents errors on a fresh install.
         $logo = Logo::firstOrCreate(['id' => 1]);
 
-        return view('user.logo.index', compact('logo'));
+        return view('user.pages.logo.index', compact('logo'));
     }
 
     /**

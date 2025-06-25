@@ -1,14 +1,14 @@
 <footer class="gap no-bottom three" style="background-image: url('{{ asset('frontend') }}/assets/img/footer.jpg');">
     <div class="container">
         <div class="row position-relative footer-boder">
-            <div class="col-lg-3">
+            <div class="col-lg-2">
                 <div class="logo">
-                    <a href="index.html"><img src="{{ asset('frontend') }}/assets/img/logo.png" alt="img"></a>
+                    <a href="index.html"><img src="{{ asset('storage/' . $logo->favicon) }}" alt="img" style="width:50%"></a>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-7">
                 <div class="logo-heading">
-                    <p>Building your own home is about desire, fantasy. But it’s achievable anyone can do it.</p>
+                    <p>{{ $logo->slogan }}</p>
                 </div>
             </div>
         </div>
@@ -16,8 +16,8 @@
             <div class="col-lg-3 col-md-6">
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
-                    <a href="#"><span>P:</span> +44 208 068 2811</a>
-                    <a href="#"><span>E:</span> +44 208 068 2811</a>
+                    <a href="#"><span><i class="fa-solid fa-phone"></i>:</span> {{ $logo->primary_phone }}</a>
+                    <a href="#"><span><i class="fa-solid fa-phone"></i>:</span> {{ $logo->secondary_phone }}</a>
                     <div class="img-slider swiper">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -53,15 +53,8 @@
                     <div class="location">
                         <div><i class="flaticon-map-location"></i></div>
                         <div class="location-style">
-                            <h6>Location 1:</h6>
-                            <p>1418 , Steert, Suite 3845 California, USA</p>
-                        </div>
-                    </div>
-                    <div class="location">
-                        <div> <i class="flaticon-map-location"></i></div>
-                        <div class="location-style">
-                            <h6>Location 1:</h6>
-                            <p>1418 , Steert, Suite 3845 California, USA</p>
+                            <h6>Location:</h6>
+                            <p>{{ $logo->address }}</p>
                         </div>
                     </div>
                 </div>
@@ -69,18 +62,32 @@
             <div class="col-lg-3 col-md-6">
                 <div class="footer-contact">
                     <h3>Follow Us</h3>
+                    @php
+                        $socials = [
+                            'instagram' => 'fa-brands fa-instagram',
+                            'youtube' => 'fa-brands fa-youtube',
+                            'linkedin' => 'fa-brands fa-linkedin-in',
+                            'facebook' => 'fa-brands fa-facebook-f',
+                            'twitter' => 'fa-brands fa-twitter'
+                        ];
+                    @endphp
+
                     <ul class="footer-social-media">
-                        <li><a href="#"><i class="fa-brands fa-instagram"></i>Instagram</a></li>
-                        <li><a href="#"><i class="fa-brands fa-youtube"></i>Youtube</a></li>
-                        <li><a href="#"><i class="fa-brands fa-linkedin-in"></i>LinkedIn</a></li>
-                        <li><a href="#"><i class="fa-brands fa-facebook-f"></i>Facebook</a></li>
-                        <li><a href="#"><i class="fa-brands fa-twitter"></i>Twitter</a></li>
+                        @foreach($socials as $social => $icon)
+                            @if(!empty($logo->social_links[$social]))
+                                <li>
+                                    <a href="{{ $logo->social_links[$social] }}" target="_blank">
+                                        <i class="{{ $icon }}"></i> {{ ucfirst($social) }}
+                                    </a>
+                                </li>
+                            @endif
+                        @endforeach
                     </ul>
                 </div>
             </div>
         </div>
         <div class="f-bottom">
-            <p>© Copyright 2025. All Rights Reserved by <a href="#"> dhukuchhuconstruction.com</a></p>
+            <p>{{ $logo->copyright_text }} <a href="#"> dhukuchhuconstruction.com</a></p>
             <ul>
                 <li>
                     <a href="#">Login</a>

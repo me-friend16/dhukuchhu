@@ -8,6 +8,10 @@ use App\Models\HeroImage;
 use App\Models\ProductCategory;
 use App\Models\Team;
 use App\Models\Event;
+use App\Models\Client;
+use App\Models\Equipment;
+use App\Models\EquipmentCategory;
+use App\Models\Service;
 use App\Models\Contact;
 use App\Http\Requests\StoreContactRequest;
 use App\Http\Requests\UpdateContactRequest;
@@ -23,6 +27,10 @@ class HomeController extends Controller
         $events = Event::paginate(9);
         $heroimages = HeroImage::all();
         $teams = Team::all();
+        $clients = Client::all();
+        $equipments = Equipment::all();
+        $equipment_categories = EquipmentCategory::all();
+        $services = Service::all();
         return view('frontend.pages.home',[
             'products'=>$products,
             'galleries' => $galleries,

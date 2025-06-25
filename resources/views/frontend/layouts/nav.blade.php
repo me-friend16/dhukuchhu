@@ -6,7 +6,7 @@
             <div class="d-flex align-items-center justify-content-between">
                 <div class="logo">
                 <a href="index.html">
-                    <img alt="logo" src="{{ asset('frontend') }}/assets/img/logo.png">
+                    <img alt="logo" src="{{ asset('storage/' . $logo->logo_image) }}">
                 </a>
                 </div>
             </div>
@@ -64,7 +64,7 @@
    <div class="mobile-nav" id="mobile-nav">
         <div class="res-log">
         <a href="index.html">
-            <img alt="logo" src="{{ asset('frontend') }}/assets/img/logo.png">
+            <img alt="logo" src="{{ asset('storage/' . $logo->logo_image) }}">
         </a>
         </div>
         <ul>

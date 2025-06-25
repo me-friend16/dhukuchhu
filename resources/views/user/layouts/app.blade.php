@@ -8,11 +8,11 @@
 	<meta content="Spruko" name="author">
 
 	<!-- Title -->
-	<title>{!! $logo->name ?? 'Poshan Foods' !!} - {!! $logo->slogan ?? '' !!} | {!! $pageTitle !!}</title>
+	<title>{!! $logo->name ?? 'Dhukuchhu Construction' !!} - {!! $logo->slogan ?? '' !!} | {!! $pageTitle !!}</title>
 
 
 	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="{{ asset('frontend/assets/images/icons/favicon.png') }}">
+	<link rel="icon" type="image/png" href="{{ asset('storage/' . $logo->favicon) }}">
 
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800" rel="stylesheet">

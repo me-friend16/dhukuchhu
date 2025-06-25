@@ -4,7 +4,7 @@
         @php
             // Use the null coalescing operator for cleaner code
             $logoName = $logo->name ?? 'Your Company';
-            $logoImg = $logo->image ? asset('storage/' . $logo->image) : asset('default-logo.png');
+            $logoImg = $logo->logo_image ? asset('storage/' . $logo->logo_image) : asset('default-logo.png');
         @endphp
 
         <a class="navbar-brand" href="{{ route('dashboard') }}">
